@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import HomeScreen from './src/screens/Home'
+import Post from './src/components/Post'
 
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
   return (
     <SafeAreaView >
       <StatusBar />
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <Post />
     </SafeAreaView>
   );
 };
