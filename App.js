@@ -15,6 +15,9 @@ import {
 
 import HomeScreen from './src/screens/Home'
 import Post from './src/components/Post'
+import feed from './assets/data/feed'
+
+const post1 = feed[0];
 
 
 const App = () => {
@@ -23,7 +26,8 @@ const App = () => {
     <SafeAreaView >
       <StatusBar />
       {/* <HomeScreen /> */}
-      <Post />
+      <Post post={feed[0]} />
+      <Post post={feed[1]} />
     </SafeAreaView>
   );
 };
