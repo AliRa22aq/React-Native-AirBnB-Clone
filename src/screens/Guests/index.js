@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native'
+
 
 const GuestScreen = () => {
+
+    const navigation = useNavigation();
     
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
@@ -10,6 +14,8 @@ const GuestScreen = () => {
 
     return (
         <View style={styles.container}>
+
+            <View>
 
                 {/* Adults */}
 
@@ -43,8 +49,8 @@ const GuestScreen = () => {
 
                 <View style={styles.row}> 
                 <View>
-                    <Text style={styles.adult}> Adults </Text>
-                    <Text  style={styles.age}> Age 13 or more </Text>
+                    <Text style={styles.adult}> Children </Text>
+                    <Text  style={styles.age}> Numbers </Text>
                 </View>
                 <View style={styles.buttonContainer}> 
                     <Pressable
@@ -71,8 +77,8 @@ const GuestScreen = () => {
 
                 <View style={styles.row}> 
                 <View>
-                    <Text style={styles.adult}> Adults </Text>
-                    <Text  style={styles.age}> Age 13 or more </Text>
+                    <Text style={styles.adult}> Infants </Text>
+                    <Text  style={styles.age}> Numbers </Text>
                 </View>
                 <View style={styles.buttonContainer}> 
                     <Pressable
@@ -94,7 +100,20 @@ const GuestScreen = () => {
                 </View>
         
                 </View>
-                
+            </View> 
+        
+            <Pressable 
+                style={styles.searchButton}
+                onPress={()=> navigation.navigate('Home', {
+                    screen: "Explore",
+                    params: {
+                        screen: "SearchResults",
+                    }
+                })}
+                >
+                <Text style={styles.searchButtonText}> Search </Text> 
+            </Pressable>
+        
         </View>
     )
 }
