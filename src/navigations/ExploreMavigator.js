@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import HomeScreen from '../screens/Home'
 import SearchResultScreen from '../screens/SearchResults';
 import GuestScreen from '../screens/Guests';
+import SearchResultTabNavigator from './SearchResultTabNavigator';
 
 
 
@@ -22,7 +23,7 @@ function ExploreMavigator() {
 
             <Stack.Screen 
                 name={'SearchResults'}
-                component= {SearchResultScreen}
+                component= {SearchResultTabNavigator}
                 options= {{
                     title: 'Search your destination',
                 }}
