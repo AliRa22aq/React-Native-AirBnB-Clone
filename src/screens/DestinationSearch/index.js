@@ -1,32 +1,46 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, FlatList, Pressable } from 'react-native'
+import { View } from 'react-native'
 import styles from './styles';
-import SearchResults from '../../../assets/data/search'
-import Entypo from 'react-native-vector-icons/Entypo'
 import {useNavigation} from '@react-navigation/native'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import SuggestionRow from './SuggestionRow'
 
 
 const DestinationSearchScreen = () => {
 
-
-    const [inputText, setInputText] = useState("");
-
     const navigation = useNavigation();
-
 
     return (
         <View style={styles.container}>
-           
+            <GooglePlacesAutocomplete
+                placeholder='Where are you going?'
+                fetchDetails
+                onPress={(data, details = null) => {
+                    console.log(data, details);
+                    navigation.navigate("Guests")
+                }}
+                styles={{
+                    textInput: styles.textInput
+                }}
+                query={{
+                    key: 'AIzaSyDXICfH2JVKph-3cf1yOPxM7F3vqfMAVPU',
+                    language: 'en',
+                    types: '(cities)'
+                }}
+                suppressDefaultStyles
+                renderRow={(item)=> <SuggestionRow item={item}/> }
+            />
+            
             {/* Input components */}
-            <TextInput  
-                style={styles.textInput}
+            {/* <TextInput  
+                style={[styles.textInput, {marginTop: 50}]}
                 placeholder="Where are you going?"
                 value={inputText}
                 onChangeText={setInputText}
-                />
+                /> */}
 
             {/* List of destination */}
-            <FlatList 
+            {/* <FlatList 
                 data={SearchResults}
                 renderItem= {({item})=>
                 { 
@@ -38,7 +52,7 @@ const DestinationSearchScreen = () => {
                     </View>
                         <Text style={styles.locationText}> {item.description} </Text>
                     </Pressable> )}}
-             />
+             /> */}
                 
         </View>
     )
