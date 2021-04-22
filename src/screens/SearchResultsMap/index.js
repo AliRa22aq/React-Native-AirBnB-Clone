@@ -4,6 +4,7 @@ import MapView from 'react-native-maps';
 
 import places from '../../../assets/data/feed'
 import CustomMarker from '../../components/CustomMarker';
+import PostCarouselItem from '../../components/PostCarouselItem';
 
 function SearchResultsMap() {
 
@@ -21,16 +22,23 @@ function SearchResultsMap() {
                 }}
             >
 
-            {
-                places.map(place => <CustomMarker 
-                    coordinate={place.coordinate} 
-                    price={place.newPrice} 
-                    isSelected = {place.id === selectedPlaceId}
-                    onPress = {() => {setSelectedPlaceId(place.id)}}
-                />
-            )}
+                {
+                    places.map(place => <CustomMarker
+                        coordinate={place.coordinate}
+                        price={place.newPrice}
+                        isSelected={place.id === selectedPlaceId}
+                        onPress={() => { setSelectedPlaceId(place.id) }}
+                    />
+                    )}
 
             </MapView>
+
+            <View style={{
+                position: 'absolute',
+                bottom: 40
+            }}>
+                <PostCarouselItem post={places[0]} />
+            </View>
 
         </View>
     )
