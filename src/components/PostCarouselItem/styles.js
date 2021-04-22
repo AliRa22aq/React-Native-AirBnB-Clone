@@ -3,7 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 const styles = StyleSheet.create({
     container: {
         height: 120,
-        padding: 5
+        padding: 5,
+
+
     },
     image: {
         height: '100%',
@@ -14,15 +16,25 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'white',
         borderRadius: 10,
-        overflow: 'hidden'
+        overflow: 'hidden',
 
+        
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 8,
     },
     bedrooms: {
         marginVertical: 5,
         color: '#5b5b5b'
     },
     description: {
-        fontSize: 18,
+        fontSize: 14,
         lineHeight: 22
     },
     prices: {
