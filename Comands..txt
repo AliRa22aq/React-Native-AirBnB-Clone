@@ -1,0 +1,64 @@
+npm i react-native-google-places-autocomplete
+
+npm i @react-navigation/material-top-tabs react-native-tab-view
+
+npm i @react-navigation/native @react-navigation/bottom-tabs @react-navigation/stack
+
+
+npm i react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context
+@react-native-community/masked-view
+
+
+yarn add react-native-vector-icons
+
+
+npm install react-native-maps --save-exact
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ - Sourcing?    (Source from Areas alongside river, Bawana, Ghang, Sahiwal, Sialkot)
+ - Pricing
+ - Data driven approach 
+ - Offer delivery service to Milk companies and farmers like Prema and Anhar
+ - Main features of company (Groceries)
+ - Permanent association with Gawalla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
