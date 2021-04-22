@@ -8,6 +8,7 @@ import SuggestionRow from './SuggestionRow'
 
 const DestinationSearchScreen = () => {
 
+
     const navigation = useNavigation();
 
     return (
@@ -23,7 +24,7 @@ const DestinationSearchScreen = () => {
                     textInput: styles.textInput
                 }}
                 query={{
-                    key: process.env.SECRET_API_KEY,
+                    key: 'AIzaSyDXICfH2JVKph-3cf1yOPxM7F3vqfMAVPU',
                     language: 'en',
                     types: '(cities)'
                 }}
