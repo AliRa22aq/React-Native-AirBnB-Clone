@@ -1,3 +1,5 @@
+const description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
 export default [
   {
     id: '0',
@@ -13,6 +15,7 @@ export default [
       latitude: 28.3915637,
       longitude: -16.6291304,
     },
+    description: description
   },
   {
     id: '1',
@@ -28,6 +31,7 @@ export default [
       latitude: 28.4815637,
       longitude: -16.2291304,
     },
+    description: description
   },
   {
     id: '2',
@@ -43,6 +47,7 @@ export default [
       latitude: 28.2515637,
       longitude: -16.3991304,
     },
+    description: description
   },
   {
     id: '3',
@@ -58,5 +63,6 @@ export default [
       latitude: 28.4815637,
       longitude: -16.2991304,
     },
+    description: description
   },
 ];
