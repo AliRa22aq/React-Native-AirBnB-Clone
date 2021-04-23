@@ -16,6 +16,8 @@ import SearchResultScreen from './src/screens/SearchResults';
 import DestinationSearchScreen from './src/screens/DestinationSearch';
 import GuestScreen from './src/screens/Guests';
 
+import { withAuthenticator } from 'aws-amplify-react-native'
+
 import 'react-native-gesture-handler'
 import Router from './src/navigations/Router';
 
@@ -35,4 +37,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
