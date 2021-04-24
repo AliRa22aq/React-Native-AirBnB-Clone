@@ -11,11 +11,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-import HomeScreen from './src/screens/Home'
-import SearchResultScreen from './src/screens/SearchResults';
-import DestinationSearchScreen from './src/screens/DestinationSearch';
-import GuestScreen from './src/screens/Guests';
-
 import { withAuthenticator } from 'aws-amplify-react-native'
 
 import 'react-native-gesture-handler'
@@ -31,7 +26,6 @@ const App = () => {
       <StatusBar barStyle='dark-content' />
       <Router />
 
-      
     </>
 
   );

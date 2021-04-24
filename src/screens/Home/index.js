@@ -2,8 +2,7 @@ import React from 'react'
 import { View, Text, ImageBackground, Pressable } from 'react-native'
 import styles from './styles';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {useNavigation} from '@react-navigation/native'
-
+import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
 
@@ -11,37 +10,30 @@ const HomeScreen = () => {
 
     return (
         <View>
-            < ImageBackground 
-                source= {require('../../../assets/images/wallpaper.jpg')} 
+            < ImageBackground
+                source={require('../../../assets/images/wallpaper.jpg')}
                 style={styles.image} >
-            <Pressable
-                style={styles.searchButton}
-                onPress = {()=> navigation.navigate("Destination Search")}
+                <Pressable
+                    style={styles.searchButton}
+                    onPress={() => navigation.navigate("Destination Search")}
                 >
-
-                <Text style={styles.searchButtonText}> 
-                <Fontisto name='search' size={15} color="#f15454" />
-                {" "} Where are you going? 
+                    <Text style={styles.searchButtonText}>
+                        <Fontisto name='search' size={15} color="#f15454" />
+                        {" "} Where are you going?
                 </Text>
-            </Pressable>
-            
-            
+                </Pressable>
 
+                <Text style={styles.title}>Go Near</Text>
 
-            <Text style={styles.title}>Go Near</Text> 
-
-            <Pressable
-                style={styles.button}
-                onPress = {()=> console.warn("Explore Btn Clicked")}
+                <Pressable
+                    style={styles.button}
+                    onPress={() => console.warn("Explore Btn Clicked")}
                 >
 
-                <Text style={styles.buttonText}> Explore nearby stays </Text>
-            </Pressable>
+                    <Text style={styles.buttonText}> Explore nearby stays </Text>
+                </Pressable>
 
-            
-
-        
-        </ImageBackground>
+            </ImageBackground>
         </View>
     )
 }

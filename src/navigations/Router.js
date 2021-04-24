@@ -13,44 +13,44 @@ const Stack = createStackNavigator();
 
 const Router = () => {
     return (
-            <NavigationContainer>
-              <Stack.Navigator>
+        <NavigationContainer>
+            <Stack.Navigator>
 
-              <Stack.Screen 
+                <Stack.Screen
                     name={"Home"}
                     component={HomeTabNavigator}
                     options={{
                         headerShown: false
                     }}
-                 />
+                />
 
 
-                <Stack.Screen 
+                <Stack.Screen
                     name={"Destination Search"}
                     component={DestinationSearchScreen}
                     options={{
                         title: "Search your destination",
                     }}
-                 />
+                />
 
-                <Stack.Screen 
+                <Stack.Screen
                     name={"Guests"}
                     component={GuestScreen}
                     options={{
                         title: "How many people?",
                     }}
-                 />
+                />
 
-                <Stack.Screen 
+                <Stack.Screen
                     name={"Post"}
                     component={PostScreen}
                     options={{
                         title: "Accomodation",
                     }}
-                 />
+                />
 
-              </Stack.Navigator>
-            </NavigationContainer>
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 

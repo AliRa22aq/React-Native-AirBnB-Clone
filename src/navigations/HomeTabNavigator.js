@@ -36,7 +36,7 @@ function HomeTabNavigator() {
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name= 'heart-o' size={25} color={color} />
+                        <FontAwesome name='heart-o' size={25} color={color} />
                     )
                 }}
             />
@@ -67,7 +67,7 @@ function HomeTabNavigator() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <EvilIcons name='user' size={35} color={color} />
-                        )
+                    )
                 }}
             />
         </Tab.Navigator>

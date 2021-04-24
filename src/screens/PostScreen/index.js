@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
-import feed from '../../../assets/data/feed';
+// import feed from '../../../assets/data/feed';
 import DetailedPost from '../../components/DetailedPost'
-import {useRoute} from '@react-navigation/native'
-
-console.log("Hello" + feed)
+import { useRoute } from '@react-navigation/native'
 
 const PostScreen = () => {
-    
-    const route = useRoute();
-    // console.log(route.params)
 
-    const post = feed.find(place => place.id === route.params.postId )
+    const route = useRoute();
+    console.log(route)
+    const post = route.params.post;
 
     return (
         <View>
-            <DetailedPost post={post}/>
+            <DetailedPost post={post} />
         </View>
     )
 }

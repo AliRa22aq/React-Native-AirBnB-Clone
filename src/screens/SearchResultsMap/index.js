@@ -4,42 +4,71 @@ import { FlatList } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions'
 
-import places from '../../../assets/data/feed'
 import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarouselItem';
 
-function SearchResultsMap() {
+import { listPosts } from '../../graphql/queries'
+import { API, graphqlOperation } from 'aws-amplify'
+
+function SearchResultsMap(props) {
+
+    const guests = props.guests;
+
 
     const [selectedPlaceId, setSelectedPlaceId] = useState();
 
     const map = useRef();
     const flatListRef = useRef();
-    const viewConfig = useRef({itemVisiblePercentThreshold: 70})
-    const onViewChanged = useRef(({viewableItems})=> {
-        if(viewableItems.length > 0) {
+    const viewConfig = useRef({ itemVisiblePercentThreshold: 70 })
+    const onViewChanged = useRef(({ viewableItems }) => {
+        if (viewableItems.length > 0) {
             const selectedPlace = viewableItems[0].item
             setSelectedPlaceId(selectedPlace.id)
         }
-    
     }
-        
-        )
+    )
 
     const width = useWindowDimensions().width;
 
+    const [posts, setPosts] = useState([])
+
     useEffect(() => {
 
-        if (!flatListRef || !selectedPlaceId ) {
+        const fetchPosts = async () => {
+
+            try {
+                const postResult = await API.graphql(
+                    graphqlOperation(listPosts, {
+                        filter: {
+                            maxGuests: {
+                                ge: guests
+                            }
+                        }
+                    }))
+                // console.log(postResult.data.listPosts.items)
+                setPosts(postResult.data.listPosts.items)
+
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchPosts()
+    }, [])
+
+
+    useEffect(() => {
+
+        if (!flatListRef || !selectedPlaceId) {
             return;
         }
 
-        const index = places.findIndex(place => place.id === selectedPlaceId )
-        flatListRef.current.scrollToIndex({index})
+        const index = posts.findIndex(place => place.id === selectedPlaceId)
+        flatListRef.current.scrollToIndex({ index })
 
-        const selectedPlace = places[index];
+        const selectedPlace = posts[index];
         const region = {
-            latitude: selectedPlace.coordinate.latitude,
-            longitude: selectedPlace.coordinate.longitude,
+            latitude: selectedPlace.latitude,
+            longitude: selectedPlace.longitude,
             latitudeDelta: 0.8,
             longitudeDelta: 0.8,
         }
@@ -63,8 +92,8 @@ function SearchResultsMap() {
             >
 
                 {
-                    places.map(place => <CustomMarker
-                        coordinate={place.coordinate}
+                    posts.map(place => <CustomMarker
+                        coordinate={{ latitude: place.latitude, longitude: place.longitude }}
                         price={place.newPrice}
                         isSelected={place.id === selectedPlaceId}
                         onPress={() => { setSelectedPlaceId(place.id) }}
@@ -78,19 +107,19 @@ function SearchResultsMap() {
                 bottom: 40
             }}>
 
-            <FlatList 
-                ref= {flatListRef}
-                horizontal
-                snapToInterval= {width - 60}
-                snapToAlignment= "center"
-                decelerationRate= "fast"
-                showsHorizontalScrollIndicator = {false}
-                data={places}
-                renderItem= {({item})=> <PostCarouselItem post={item} /> } 
-                viewabilityConfig={viewConfig.current}
-                onViewableItemsChanged={onViewChanged.current}
-            />
-                
+                <FlatList
+                    ref={flatListRef}
+                    horizontal
+                    snapToInterval={width - 60}
+                    snapToAlignment="center"
+                    decelerationRate="fast"
+                    showsHorizontalScrollIndicator={false}
+                    data={posts}
+                    renderItem={({ item }) => <PostCarouselItem post={item} />}
+                    viewabilityConfig={viewConfig.current}
+                    onViewableItemsChanged={onViewChanged.current}
+                />
+
             </View>
 
         </View>
