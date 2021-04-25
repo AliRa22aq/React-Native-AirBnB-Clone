@@ -1,4 +1,4 @@
-This AirBnB clone is made with react native. I have used aws-amplify and DynamoDB for the backend. It also has aws-Authentication.
+This AirBnB clone is made with react native. I have used aws-amplify and DynamoDB for the backend. It also has google maps and aws-Authentication in this project.
 
 <img src="./assets/ReadmeImages/1.png" alt="Image1" width="200"/>
 <img src="./assets/ReadmeImages/2.png" alt="Image2" width="200"/>
