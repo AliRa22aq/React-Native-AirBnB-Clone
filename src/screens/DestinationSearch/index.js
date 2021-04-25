@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import SuggestionRow from './SuggestionRow'
+
+import {GOOGLE_MAPS_API_KEY} from "@env"
+
 
 const DestinationSearchScreen = () => {
 
@@ -15,14 +18,14 @@ const DestinationSearchScreen = () => {
                 placeholder='Where are you going?'
                 fetchDetails
                 onPress={(data, details = null) => {
-                    // console.log(data, details);
-                    navigation.navigate("Guests")
+                    console.log(data, details);
+                    navigation.navigate("Guests", {viewport: details.geometry.viewport})
                 }}
                 styles={{
                     textInput: styles.textInput
                 }}
                 query={{
-                    key: 'AIzaSyDXICfH2JVKph-3cf1yOPxM7F3vqfMAVPU',
+                    key: GOOGLE_MAPS_API_KEY,
                     language: 'en',
                     types: '(cities)'
                 }}

@@ -12,7 +12,7 @@ import { API, graphqlOperation } from 'aws-amplify'
 
 function SearchResultsMap(props) {
 
-    const guests = props.guests;
+    const {posts} = props;
 
 
     const [selectedPlaceId, setSelectedPlaceId] = useState();
@@ -29,32 +29,6 @@ function SearchResultsMap(props) {
     )
 
     const width = useWindowDimensions().width;
-
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-
-        const fetchPosts = async () => {
-
-            try {
-                const postResult = await API.graphql(
-                    graphqlOperation(listPosts, {
-                        filter: {
-                            maxGuests: {
-                                ge: guests
-                            }
-                        }
-                    }))
-                // console.log(postResult.data.listPosts.items)
-                setPosts(postResult.data.listPosts.items)
-
-            } catch (e) {
-                console.log(e)
-            }
-        }
-        fetchPosts()
-    }, [])
-
 
     useEffect(() => {
 
@@ -110,6 +84,7 @@ function SearchResultsMap(props) {
                 <FlatList
                     ref={flatListRef}
                     horizontal
+                    keyExtractor={(index) => {return index.toString()}}
                     snapToInterval={width - 60}
                     snapToAlignment="center"
                     decelerationRate="fast"
