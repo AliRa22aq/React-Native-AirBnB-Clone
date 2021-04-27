@@ -2,7 +2,7 @@ This AirBnB clone is made with react native. I have used aws-amplify and DynamoD
 Technologies Used: <br />
 <img src="./techs.jpg" alt="Image1" width="100%"/> <br />
 
-Screen Overreview: <br />
+Screen Overreview: <br />  <br />
 <div>
 <img src="./assets/ReadmeImages/1.png" alt="Image1" width="200"/>
 <img src="./assets/ReadmeImages/2.png" alt="Image2" width="200"/>
